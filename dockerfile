@@ -15,6 +15,8 @@ COPY . /dockerteste
 
 ##faz build do projeto e altera o diretorio inicial
 WORKDIR /dockerteste
+RUN rosdep install -i --from-path src --rosdistro humble -y && \
+    colcon build --symlink-install
 
 ##declarando o source, para nao ter que fazer em toda inicializacao de terminal bash ##(nao funciona)
 ##RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
@@ -25,4 +27,3 @@ WORKDIR /dockerteste
 
 ## teste ros (precisa de display):
 ## ros2 run turtlesim turtlesim_node
-
