@@ -10,7 +10,7 @@ RUN apt-get update
 ##instalar miscelaneos
 RUN sudo apt-get install -y vim wget
 
-RUN mkdir dockerteste/src
+RUN mkdir -p dockerteste/src
 
 
 ##faz build do projeto e altera o diretorio inicial
