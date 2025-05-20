@@ -10,11 +10,14 @@ RUN apt-get update
 ##instalar miscelaneos
 RUN sudo apt-get install -y vim wget
 
-##copiando arquivos de teste
-COPY . /dockerteste
+RUN mkdir dockerteste/src
+
 
 ##faz build do projeto e altera o diretorio inicial
 WORKDIR /dockerteste
+RUN cd /src
+RUN git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+RUN cd ..
 RUN rosdep install -i --from-path src --rosdistro humble -y
    
 ##declarando o source, para nao ter que fazer em toda inicializacao de terminal bash ##(nao funciona)
