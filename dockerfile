@@ -15,10 +15,10 @@ RUN mkdir -p dockerteste/src
 
 ##faz build do projeto e altera o diretorio inicial
 WORKDIR /dockerteste
-RUN cd /src
-RUN git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
-RUN cd ..
-RUN rosdep install -i --from-path src --rosdistro humble -y
+RUN cd dockerteste/src && git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+
+RUN cd dockerteste && rosdep install -i --from-path src --rosdistro humble -y
+RUN cd dockerteste && colcon build --symlink-install
    
 ##declarando o source, para nao ter que fazer em toda inicializacao de terminal bash ##(nao funciona)
 ##RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
