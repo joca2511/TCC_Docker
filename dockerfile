@@ -14,9 +14,9 @@ RUN mkdir -p /dockerteste/src
 
 
 ##faz build do projeto e altera o diretorio inicial
+WORKDIR /dockerteste/src
+RUN git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
 WORKDIR /dockerteste
-RUN cd /src && git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
-
 RUN rosdep install -i --from-path src --rosdistro humble -y
 RUN colcon build --symlink-install
    
