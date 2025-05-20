@@ -19,7 +19,6 @@ RUN git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.gi
 WORKDIR /dockerteste
 RUN rosdep install -i --from-path src --rosdistro humble -y
 ##rodar source do ros2 antes de usar colcon
-RUN source ./opt/ros/humble/setup.bash && colcon build --symlink-install
 ##rodar source do projeto antes de rodar o simulador
 ##declarar variavel de instancia antes de rodar simulador (export TURTLEBOT3_MODEL=burger)
 
