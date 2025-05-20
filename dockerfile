@@ -18,7 +18,7 @@ WORKDIR /dockerteste/src
 RUN git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
 WORKDIR /dockerteste
 RUN rosdep install -i --from-path src --rosdistro humble -y
-RUN colcon build --symlink-install
+##RUN colcon build --symlink-install
    
 ##declarando o source, para nao ter que fazer em toda inicializacao de terminal bash ##(nao funciona)
 ##RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
