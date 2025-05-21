@@ -8,7 +8,7 @@ RUN sudo apt-get install -y ignition-fortress
 RUN sudo apt-get install -y ros-humble-ros-gz
 
 ##instalar miscelaneos
-RUN sudo apt-get install -y vim wget
+RUN sudo apt-get install -y vim wget ros-humble-demo-nodes-cpp
 
 RUN mkdir -p /dockerteste/src
 
