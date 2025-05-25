@@ -9,7 +9,7 @@ RUN apt-get update
 RUN sudo apt-get install -y ros-humble-ros-gz
 
 ##instalar miscelaneos
-RUN sudo apt-get install -y vim wget ros-humble-demo-nodes-cpp iputils-ping
+RUN sudo apt-get install -y vim wget ros-humble-demo-nodes-cpp iputils-ping ros-humble-rmw-cyclonedds-cpp
 
 RUN mkdir -p /dockerteste/src
 
