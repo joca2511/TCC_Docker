@@ -1,6 +1,7 @@
 FROM ros:humble
 
 ##instalar gazebo
+RUN sudo apt-get -y upgrade
 RUN apt-get update
 ##RUN sudo apt-get install -y ignition-fortress
 
