@@ -2,7 +2,7 @@ FROM ros:humble
 
 ##instalar gazebo
 RUN apt-get update
-RUN sudo apt-get install -y ignition-fortress
+##RUN sudo apt-get install -y ignition-fortress
 
 ##pacotes para compatibilidade humble-gazebo
 RUN sudo apt-get install -y ros-humble-ros-gz
