@@ -1,6 +1,6 @@
 FROM ros:humble
 
-##instalar gazebo
+##atualizar imagem
 RUN sudo apt-get -y upgrade
 RUN apt-get update
 
