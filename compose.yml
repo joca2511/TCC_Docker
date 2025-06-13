@@ -1,0 +1,14 @@
+services:
+  ros2:
+    image: ghcr.io/joca2511/tcc_docker:main
+    network_mode: host
+    privileged: true
+    environment:
+      - ROS_DOMAIN_ID=10
+      - TURTLEBOT3_MODEL=burger
+      - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+    stdin_open: true
+    tty: true
+    
+    
+    
