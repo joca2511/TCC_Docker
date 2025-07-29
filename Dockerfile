@@ -14,8 +14,8 @@ RUN apt-get update && apt-get install -y \
     ros-${ROS_DISTRO}-cartographer \
     ros-${ROS_DISTRO}-cartographer-ros \
     ros-${ROS_DISTRO}-navigation2 \
-    ros-${ROS_DISTRO}-nav2-bringup && \
-    ros-${ROS_DISTRO}-rmw-cyclonedds-cpp && \
+    ros-${ROS_DISTRO}-nav2-bringup \
+    ros-${ROS_DISTRO}-rmw-cyclonedds-cpp \
     rm -rf /var/lib/apt/lists/*
 
 ENV COLCON_WS=/root/turtlebot3_ws
