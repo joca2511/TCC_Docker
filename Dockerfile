@@ -25,6 +25,7 @@ RUN mkdir -p ${COLCON_WS}/src && \
     git clone -b humble https://github.com/ROBOTIS-GIT/DynamixelSDK.git && \
     git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git && \
     git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git
+COPY TCC /TCC
 
 RUN bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && \
     cd ${COLCON_WS} && \
