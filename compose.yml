@@ -1,9 +1,7 @@
 ##Original docker-compose taken from https://github.com/ROBOTIS-GIT/turtlebot3
 services:
   ros2:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/joca2511/tcc_docker:main
     container_name: turtlebot3
     tty: true
     restart: always
