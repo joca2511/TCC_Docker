@@ -28,9 +28,9 @@ RUN mkdir -p ${COLCON_WS}/src && \
     git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git && \
     git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
 COPY TCC ${COLCON_WS}/src/TCC
-
-RUN mkdir -p $HOME/maps
-COPY maps $HOME/maps
+WORKDIR /root
+RUN mkdir -p maps
+COPY maps ./maps
 
 RUN bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && \
     cd ${COLCON_WS} && \
