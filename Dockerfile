@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
     ros-${ROS_DISTRO}-nav2-bringup \
     ros-${ROS_DISTRO}-rmw-cyclonedds-cpp && \
     rm -rf /var/lib/apt/lists/*
-
+COPY rotasRobos.sh .
 ENV COLCON_WS=/root/turtlebot3_ws
 WORKDIR ${COLCON_WS}
 

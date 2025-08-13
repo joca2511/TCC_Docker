@@ -1,0 +1,12 @@
+TB3_1:
+ros2 run TCC turtlebot3_absolute_move_Arena TB3_1 1.3 2.5 180 0.15 2.5 0
+- x=1.3  y=2.5 r=180
+- x=0.15 y=2.5 r=0
+TB3_2:
+ros2 run TCC turtlebot3_absolute_move_Arena TB3_2 1.5 2.7 90 1.5 4.8 270
+- x=1.5  y=2.7 r=90
+- x=1.5  y=4.8 r=270
+TB3_3:
+ros2 run TCC turtlebot3_absolute_move_Arena TB3_3 3.8 2.5 180 2.5 2.5 0
+- x=3.8  y=2.5 r=180
+- x=2.5  y=2.5 r= 0
