@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Install the required packages in a single layer and clean up afterwards
 RUN apt-get update && apt-get install -y \
-    gnome-terminal \
+    xterm \
     git \
     python3-pip \
     ros-${ROS_DISTRO}-gazebo-ros-pkgs \
