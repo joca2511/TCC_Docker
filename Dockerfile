@@ -18,12 +18,9 @@ RUN apt-get update && apt-get install -y \
     ros-${ROS_DISTRO}-rmw-cyclonedds-cpp && \
     rm -rf /var/lib/apt/lists/*
 
-COPY rotasRobos.sh .
-RUN mkdir -p maps
-COPY maps ./maps
-
 ENV COLCON_WS=/root/turtlebot3_ws
 WORKDIR ${COLCON_WS}
+
 RUN mkdir -p ${COLCON_WS}/src && \
     cd ${COLCON_WS}/src && \
     git clone -b humble https://github.com/ROBOTIS-GIT/DynamixelSDK.git && \
@@ -31,8 +28,10 @@ RUN mkdir -p ${COLCON_WS}/src && \
     git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git && \
     git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
 COPY TCC ${COLCON_WS}/src/TCC
-
-
+WORKDIR /root
+COPY rotasRobos.sh .
+RUN mkdir -p maps
+COPY maps ./maps
 
 RUN bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && \
     cd ${COLCON_WS} && \
