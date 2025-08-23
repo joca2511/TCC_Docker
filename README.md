@@ -1,6 +1,7 @@
 Falta:  
 Terminar passo-a-passo de dependencias
-Pesquisar como fazer mandar goal rviz usando commandline  
+Pesquisar como fazer mandar goal nav2 usando commandline (funciona, mas precisa do abaixo!)  
+Pesquisar como fazer mandar pos inicial usando commandline!  
 Adicionar comando nmon para monitorar desempenho  
 Talvez eventualmente permitir alimentar um arquivo para rotasRobos
 
