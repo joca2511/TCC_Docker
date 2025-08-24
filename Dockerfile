@@ -10,6 +10,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     xterm \
     git \
+    sysstat \
     python3-pip \
     ros-${ROS_DISTRO}-gazebo-ros-pkgs \
     ros-${ROS_DISTRO}-cartographer \
@@ -30,8 +31,8 @@ RUN mkdir -p ${COLCON_WS}/src && \
     git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
 COPY TCC ${COLCON_WS}/src/TCC
 WORKDIR /root
-COPY rotasRobos.sh .
-RUN mkdir -p maps
+RUN mkdir -p maps scripts
+COPY scripts ./scripts
 COPY maps ./maps
 
 RUN bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && \
