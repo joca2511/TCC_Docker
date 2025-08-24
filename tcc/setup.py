@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 from glob import glob
 
-package_name = 'TCC'
+package_name = 'tcc'
 
 setup(
     name=package_name,
@@ -22,7 +22,7 @@ setup(
     license='Apache License 2.0',
     entry_points={
         'console_scripts': [
-            'turtlebot3_absolute_move_Arena = TCC.turtlebot3_absolute_move_Arena:main',
+            'turtlebot3_absolute_move_Arena = tcc.turtlebot3_absolute_move_Arena:main',
         ],
     },
 )

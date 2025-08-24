@@ -55,7 +55,7 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
 
     world = os.path.join(
-        get_package_share_directory('TCC'),
+        get_package_share_directory('tcc'),
         'worlds',
         'Arena.world'
     )
