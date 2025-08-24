@@ -29,7 +29,7 @@ RUN mkdir -p ${COLCON_WS}/src && \
     git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git && \
     git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git && \
     git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
-COPY TCC ${COLCON_WS}/src/tcc
+COPY tcc ${COLCON_WS}/src/tcc
 WORKDIR /root
 COPY scripts /scripts
 COPY maps /maps
