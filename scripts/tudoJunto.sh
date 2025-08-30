@@ -1,6 +1,7 @@
 #!/bin/bash
 
-./instanciarGazebo.sh
+./instanciarArena.sh
+./instanciarPatrulheiros.sh
 sleep 10
 ./rotasRobos.sh
 sleep 15
