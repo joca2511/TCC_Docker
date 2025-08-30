@@ -30,8 +30,9 @@ RUN mkdir -p ${COLCON_WS}/src && \
     git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git && \
     git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
 COPY tcc ${COLCON_WS}/src/tcc
-WORKDIR /root
 COPY scripts /scripts
+COPY inicioRapidoArena.sh .
+COPY inicioRapidoPatrulha.sh .
 COPY maps /maps
 
 RUN bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && \
