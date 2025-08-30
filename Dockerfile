@@ -30,10 +30,12 @@ RUN mkdir -p ${COLCON_WS}/src && \
     git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git && \
     git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
 COPY tcc ${COLCON_WS}/src/tcc
-COPY scripts /scripts
+COPY scripts scripts
 COPY inicioRapidoArena.sh .
 COPY inicioRapidoPatrulha.sh .
-COPY maps /maps
+COPY NMONVisualizer_2025-08-13.jar .
+COPY maps maps
+COPY nmon_logs nmon_logs
 
 RUN bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && \
     cd ${COLCON_WS} && \
