@@ -14,3 +14,7 @@ xterm -T "Terminal 8" -e "bash -c 'ros2 action send_goal /navigate_to_pose nav2_
 }\"
 ; exec bash'" 
 
+exit
+
+
+
