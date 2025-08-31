@@ -36,6 +36,7 @@ COPY inicioRapidoPatrulha.sh .
 COPY NMONVisualizer_2025-08-13.jar .
 COPY maps maps
 COPY nmon_logs nmon_logs
+COPY burger.yaml .
 
 RUN bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && \
     cd ${COLCON_WS} && \
