@@ -54,24 +54,10 @@ def generate_launch_description():
 
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
 
-    world = os.path.join(
-        get_package_share_directory('tcc'),
-        'worlds',
-        'Arena.world'
-    )
+    
 
-    gzserver_cmd = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            os.path.join(pkg_gazebo_ros, 'launch', 'gzserver.launch.py')
-        ),
-        launch_arguments={'world': world}.items()
-    )
+    
 
-    gzclient_cmd = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            os.path.join(pkg_gazebo_ros, 'launch', 'gzclient.launch.py')
-        )
-    )
 
     robot_state_publisher_cmd_list = []
 
@@ -121,8 +107,6 @@ def generate_launch_description():
 
     ld = LaunchDescription()
     # Add the commands to the launch description
-    ld.add_action(gzserver_cmd)
-    ld.add_action(gzclient_cmd)
     ld.add_action(RegisterEventHandler(
         OnShutdown(
             on_shutdown=lambda event,
