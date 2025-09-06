@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./scripts/iniciarNmon.sh Patrulha
+./scripts/iniciarNmon.sh PatrulhaDocker
 ./scripts/instanciarArena.sh
 ./scripts/instanciarPatrulheiros.sh
 sleep 10

@@ -5,6 +5,7 @@ Talvez eventualmente permitir alimentar um arquivo para rotasRobos
 
 Comandos necessarios:  
 !!!Lembrar de colocar usuario como x.org antes de logar, inves de wayland!  
+!!!Lembrar de sempre rodar xhost +local:docker!
   
 apt update  
 apt upgrade  
