@@ -8,12 +8,20 @@ Comandos necessarios:
   
 apt update  
 apt upgrade  
-apt install sysstat, xterm  
+
+apt install nmon, xterm  
 xhost +local:docker  
 install docker engine  
 install ros humble  
 
   
-instalar dependencias robotis/turtlebot3   
+instalar dependencias robotis/turtlebot3  
+
+para arquivo ansible, não esquecer de configurar user!
+
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+ 
 
 
