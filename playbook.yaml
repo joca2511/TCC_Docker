@@ -1,0 +1,103 @@
+- name: Configurando Instalacao ROS2 Humble
+  hosts: localhost
+  become: no
+  connection: local
+  gather_facts: yes
+  tasks:
+
+    - name: Checa se a versao Linux Jammy 22.04 esta instalada
+      fail:
+        msg: "O playbook precisa de Linux Jammy 22.04!"
+      when: ansible_distribution_release != "jammy" or ansible_distribution_version != "22.04"
+
+    - name: Atualiza apt cache
+      become: true
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Instala locales e dependencias
+      become: true
+      ansible.builtin.apt:
+        name:
+          - nmon
+          - locales
+          - software-properties-common
+          - curl
+        state: present
+
+    - name: Gera locales
+      become: true
+      community.general.locale_gen:
+        name: "en_US.UTF-8"
+        state: present
+
+    - name: Aplica locales
+      become: true
+      ansible.builtin.shell: update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+      environment:
+        LANG: en_US.UTF-8
+
+    - name: Habilita repositorio universe
+      become: true
+      ansible.builtin.apt_repository:
+        repo: "deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} universe"
+        state: present
+
+    # --------------------------
+    # Instalação do ros-apt-source
+    # --------------------------
+
+    - name: Get latest ros-apt-source release version
+      become: true
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest
+        return_content: yes
+      register: ros_apt_release
+
+    - name: Extract tag_name (release version)
+      become: true
+      ansible.builtin.set_fact:
+        ros_apt_version: "{{ ros_apt_release.json.tag_name }}"
+
+    - name: Define URL para download do ros2-apt-source
+      become: true
+      ansible.builtin.set_fact:
+        ros_apt_deb_url: "https://github.com/ros-infrastructure/ros-apt-source/releases/download/{{ ros_apt_version }}/ros2-apt-source_{{ ros_apt_version }}.{{ ansible_lsb.codename }}_all.deb"
+
+    - name: Download ros2-apt-source deb
+      become: true
+      ansible.builtin.get_url:
+        url: "{{ ros_apt_deb_url }}"
+        dest: /tmp/ros2-apt-source.deb
+        mode: '0644'
+
+    - name: Instala ros2-apt-source deb
+      become: true
+      ansible.builtin.apt:
+        deb: /tmp/ros2-apt-source.deb
+        state: present
+
+    - name: Atualiza apt novamente
+      become: true
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Upgrade nos pacotes encontrados pelo apt
+      become: true
+      ansible.builtin.apt:
+        upgrade: yes
+
+    - name: Instala ROS2 Humble Desktop
+      become: true
+      ansible.builtin.apt:
+        name: ros-humble-desktop
+        state: present
+
+    - name: Clona repo TCC no Desktop do usuario
+      ansible.builtin.git:
+        repo: 'https://github.com/joca2511/TCC_Docker.git'
+        dest: '/home/{{ ansible_user_id }}/Desktop/TCC_Docker_teste'
+        update: yes
+
+- name: instalar docker
+  ansible.builtin.import_playbook: install-docker.yaml
