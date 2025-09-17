@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ./scripts/iniciarNmon.sh PatrulhaDocker
-./scripts/instanciarArena.sh
+./scripts/instanciarArena.sh Arena.world
 ./scripts/instanciarPatrulheiros.sh
 sleep 10
 ./scripts/rotasRobos.sh

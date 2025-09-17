@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ./scripts/iniciarNmon.sh Arena
-./scripts/instanciarArena.sh
+./scripts/instanciarArena.sh Arena.world
 sleep 20
 ./scripts/moverMain.sh
 ./scripts/pararNmon.sh

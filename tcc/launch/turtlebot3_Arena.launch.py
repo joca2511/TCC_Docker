@@ -20,12 +20,17 @@ import os
 
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription
+from launch.actions import DeclareLaunchArgument,IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import LaunchConfiguration
+from launch.substitutions import LaunchConfiguration,PathJoinSubstitution
 
 
 def generate_launch_description():
+    name_arg = DeclareLaunchArgument(
+        "name",
+        default_value="Arena.world",
+        description="Name of the map e.g. Arena.world"
+    )
     launch_file_dir = os.path.join(get_package_share_directory('tcc'), 'launch')
     pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
 
@@ -33,11 +38,11 @@ def generate_launch_description():
     x_pose = LaunchConfiguration('x_pose', default='0.75')
     y_pose = LaunchConfiguration('y_pose', default='0.2')
 
-    world = os.path.join(
+    world = PathJoinSubstitution([
         get_package_share_directory('tcc'),
         'worlds',
-        'Arena.world'
-    )
+        LaunchConfiguration("name")
+    ])
 
     gzserver_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
