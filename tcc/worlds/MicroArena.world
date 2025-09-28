@@ -1,12 +1,72 @@
 <?xml version='1.0'?>
 <sdf version='1.6'>
-  <world name='base'>
-  <include>
-  	<uri>model://sun</uri>
-  </include>
-  <include>
- 		<uri>model://ground_plane</uri>
-  </include>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
     <model name='k404'>
     <pose>0 0 0 0 -0 0</pose>
     <link name='0_link'>
@@ -6547,8 +6607,8 @@
   <static>true</static>
 
     </model>
-    <model name='Placa1'>
-        <pose>2.732450 2.539440 0 0 0 1.57</pose>
+    <model name='Placa00'>
+        <pose>2.8 2.69109 0 0 -0 0</pose>
         <static>1</static>
         <link name='link'>
           <collision name='collision'>
@@ -6570,8 +6630,8 @@
           <kinematic>0</kinematic>
         </link>
     </model>
-    <model name='Placa2'>
-        <pose>2.37015 2.53943 0 0 -0 1.57</pose>
+    <model name='Placa01'>
+        <pose>2.8 2.33075 0 0 -0 0</pose>
         <static>1</static>
         <link name='link'>
           <collision name='collision'>
@@ -6593,8 +6653,8 @@
           <kinematic>0</kinematic>
         </link>
     </model>
-    <model name='Placa3'>
-        <pose>3.09221 2.53943 0 0 -0 1.57</pose>
+    <model name='Placa02'>
+        <pose>2.8 1.96943 0 0 -0 0</pose>
         <static>1</static>
         <link name='link'>
           <collision name='collision'>
@@ -6616,8 +6676,8 @@
           <kinematic>0</kinematic>
         </link>
     </model>
-    <model name='Placa4'>
-        <pose>3.80692 1.2774 0 0 -0 1.57</pose>
+    <model name='Placa03'>
+        <pose>2.8 1.61252 0 0 -0 0</pose>
         <static>1</static>
         <link name='link'>
           <collision name='collision'>
@@ -6639,8 +6699,8 @@
           <kinematic>0</kinematic>
         </link>
     </model>
-    <model name='Placa5'>
-        <pose>2.72547 1.27695 0 0 -0 1.57</pose>
+    <model name='Placa04'>
+        <pose>2.8 1.2575 0 0 -0 0</pose>
         <static>1</static>
         <link name='link'>
           <collision name='collision'>
@@ -6662,8 +6722,8 @@
           <kinematic>0</kinematic>
         </link>
     </model>
-    <model name='Placa6'>
-        <pose>3.08648 1.27706 0 0 -0 1.57</pose>
+    <model name='Placa05'>
+        <pose>2.8 0.897818 0 0 -0 0</pose>
         <static>1</static>
         <link name='link'>
           <collision name='collision'>
@@ -6685,8 +6745,8 @@
           <kinematic>0</kinematic>
         </link>
     </model>
-    <model name='Placa7'>
-        <pose>3.44758 1.27708 0 0 -0 1.57</pose>
+    <model name='Placa06'>
+        <pose>2.8 0.536932 0 0 -0 0</pose>
         <static>1</static>
         <link name='link'>
           <collision name='collision'>
@@ -6708,8 +6768,8 @@
           <kinematic>0</kinematic>
         </link>
     </model>
-    <model name='Placa8'>
-        <pose>3.463822 0.526993 0 0 -0 1.57</pose>
+    <model name='Placa07'>
+        <pose>2.8 0.182263 0 0 -0 0</pose>
         <static>1</static>
         <link name='link'>
           <collision name='collision'>
@@ -6731,8 +6791,31 @@
           <kinematic>0</kinematic>
         </link>
     </model>
-    <model name='Placa9'>
-        <pose>3.10234 0.526452 0 0 -0 1.57</pose>
+    <model name='Placa08'>
+        <pose>1.029 2.69109 0 0 -0 0</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.031694 0.360886 0.40006</size>
+              </box>
+            </geometry>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.031694 0.360886 0.40006</size>
+              </box>
+            </geometry>
+          </visual>
+          <self_collide>0</self_collide>
+          <enable_wind>0</enable_wind>
+          <kinematic>0</kinematic>
+        </link>
+    </model>
+    <model name='Placa09'>
+        <pose>1.029 2.33075 0 0 -0 0</pose>
         <static>1</static>
         <link name='link'>
           <collision name='collision'>
@@ -6755,7 +6838,7 @@
         </link>
     </model>
     <model name='Placa10'>
-        <pose>3.00567 2.00183 0 0 -0 1.57</pose>
+        <pose>1.029 1.96943 0 0 -0 0</pose>
         <static>1</static>
         <link name='link'>
           <collision name='collision'>
@@ -6778,7 +6861,7 @@
         </link>
     </model>
     <model name='Placa11'>
-        <pose>0.427226 1.59754 0 0 -0 0</pose>
+        <pose>1.029 1.61252 0 0 -0 0</pose>
         <static>1</static>
         <link name='link'>
           <collision name='collision'>
@@ -6801,7 +6884,7 @@
         </link>
     </model>
     <model name='Placa12'>
-        <pose>0.590901 3.23044 0 0 -0 1.57</pose>
+        <pose>1.029 1.2575 0 0 -0 0</pose>
         <static>1</static>
         <link name='link'>
           <collision name='collision'>
@@ -6824,7 +6907,7 @@
         </link>
     </model>
     <model name='Placa13'>
-        <pose>0.952624 3.23037 0 0 -0 1.57</pose>
+        <pose>1.029 0.897818 0 0 -0 0</pose>
         <static>1</static>
         <link name='link'>
           <collision name='collision'>
@@ -6847,7 +6930,7 @@
         </link>
     </model>
     <model name='Placa14'>
-        <pose>1.31389 3.23073 0 0 -0 1.57</pose>
+        <pose>1.029 0.536932 0 0 -0 0</pose>
         <static>1</static>
         <link name='link'>
           <collision name='collision'>
@@ -6870,7 +6953,7 @@
         </link>
     </model>
     <model name='Placa15'>
-        <pose>1.6744 3.23121 0 0 -0 1.57</pose>
+        <pose>1.029 0.182263 0 0 -0 0</pose>
         <static>1</static>
         <link name='link'>
           <collision name='collision'>
@@ -6893,7 +6976,7 @@
         </link>
     </model>
     <model name='Placa16'>
-        <pose>2.71226 3.26281 0 0 -0 1.57</pose>
+        <pose>2.63501 2.886 0 0 -0 1.57</pose>
         <static>1</static>
         <link name='link'>
           <collision name='collision'>
@@ -6916,7 +6999,7 @@
         </link>
     </model>
     <model name='Placa17'>
-        <pose>0.42662 1.95843 0 0 -0 0</pose>
+        <pose>2.27427 2.88599 0 0 -0 1.57</pose>
         <static>1</static>
         <link name='link'>
           <collision name='collision'>
@@ -6939,7 +7022,7 @@
         </link>
     </model>
     <model name='Placa18'>
-        <pose>0.426106 2.32 0 0 -0 0</pose>
+        <pose>1.91444 2.88599 0 0 -0 1.57</pose>
         <static>1</static>
         <link name='link'>
           <collision name='collision'>
@@ -6962,7 +7045,7 @@
         </link>
     </model>
     <model name='Placa19'>
-        <pose>0.425915 2.68095 0 0 -0 0</pose>
+        <pose>1.5543 2.88599 0 0 -0 1.57</pose>
         <static>1</static>
         <link name='link'>
           <collision name='collision'>
@@ -6985,421 +7068,7 @@
         </link>
     </model>
     <model name='Placa20'>
-        <pose>0.425298 3.04244 0 0 -0 0</pose>
-        <static>1</static>
-        <link name='link'>
-          <collision name='collision'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </collision>
-          <visual name='visual'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </visual>
-          <self_collide>0</self_collide>
-          <enable_wind>0</enable_wind>
-          <kinematic>0</kinematic>
-        </link>
-    </model>
-    <model name='Placa21'>
-        <pose>0.427425 1.23641 0 0 -0 0</pose>
-        <static>1</static>
-        <link name='link'>
-          <collision name='collision'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </collision>
-          <visual name='visual'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </visual>
-          <self_collide>0</self_collide>
-          <enable_wind>0</enable_wind>
-          <kinematic>0</kinematic>
-        </link>
-    </model>
-    <model name='Placa22'>
-        <pose>1.8406 3.7661 0 0 -0 0</pose>
-        <static>1</static>
-        <link name='link'>
-          <collision name='collision'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </collision>
-          <visual name='visual'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </visual>
-          <self_collide>0</self_collide>
-          <enable_wind>0</enable_wind>
-          <kinematic>0</kinematic>
-        </link>
-    </model>
-    <model name='Placa23'>
-        <pose>1.84017 4.12777 0 0 -0 0</pose>
-        <static>1</static>
-        <link name='link'>
-          <collision name='collision'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </collision>
-          <visual name='visual'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </visual>
-          <self_collide>0</self_collide>
-          <enable_wind>0</enable_wind>
-          <kinematic>0</kinematic>
-        </link>
-    </model>
-    <model name='Placa24'>
-        <pose>2.90911 2.736 0 0 -0 0</pose>
-        <static>1</static>
-        <link name='link'>
-          <collision name='collision'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </collision>
-          <visual name='visual'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </visual>
-          <self_collide>0</self_collide>
-          <enable_wind>0</enable_wind>
-          <kinematic>0</kinematic>
-        </link>
-    </model>
-    <model name='Placa25'>
-        <pose>2.90837 3.09687 0 0 -0 0</pose>
-        <static>1</static>
-        <link name='link'>
-          <collision name='collision'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </collision>
-          <visual name='visual'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </visual>
-          <self_collide>0</self_collide>
-          <enable_wind>0</enable_wind>
-          <kinematic>0</kinematic>
-        </link>
-    </model>
-    <model name='Placa26'>
-        <pose>3.63866 2.18269 0 0 -0 0</pose>
-        <static>1</static>
-        <link name='link'>
-          <collision name='collision'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </collision>
-          <visual name='visual'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </visual>
-          <self_collide>0</self_collide>
-          <enable_wind>0</enable_wind>
-          <kinematic>0</kinematic>
-        </link>
-    </model>
-    <model name='Placa27'>
-        <pose>3.64011 1.82321 0 0 -0 0</pose>
-        <static>1</static>
-        <link name='link'>
-          <collision name='collision'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </collision>
-          <visual name='visual'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </visual>
-          <self_collide>0</self_collide>
-          <enable_wind>0</enable_wind>
-          <kinematic>0</kinematic>
-        </link>
-    </model>
-    <model name='Placa28'>
-        <pose>3.62804 1.08185 0 0 -0 0</pose>
-        <static>1</static>
-        <link name='link'>
-          <collision name='collision'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </collision>
-          <visual name='visual'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </visual>
-          <self_collide>0</self_collide>
-          <enable_wind>0</enable_wind>
-          <kinematic>0</kinematic>
-        </link>
-    </model>
-    <model name='Placa29'>
-        <pose>3.62826 0.721652 0.005089 0 -0 0</pose>
-        <static>1</static>
-        <link name='link'>
-          <collision name='collision'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </collision>
-          <visual name='visual'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </visual>
-          <self_collide>0</self_collide>
-          <enable_wind>0</enable_wind>
-          <kinematic>0</kinematic>
-        </link>
-    </model>
-    <model name='Placa30'>
-        <pose>0.77105 4.45754 0 0 -0 0</pose>
-        <static>1</static>
-        <link name='link'>
-          <collision name='collision'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </collision>
-          <visual name='visual'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </visual>
-          <self_collide>0</self_collide>
-          <enable_wind>0</enable_wind>
-          <kinematic>0</kinematic>
-        </link>
-    </model>
-    <model name='Placa31'>
-        <pose>0.772762 4.09807 0 0 -0 0</pose>
-        <static>1</static>
-        <link name='link'>
-          <collision name='collision'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </collision>
-          <visual name='visual'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </visual>
-          <self_collide>0</self_collide>
-          <enable_wind>0</enable_wind>
-          <kinematic>0</kinematic>
-        </link>
-    </model>
-    <model name='Placa32'>
-        <pose>2.54622 3.45817 0 0 -0 0</pose>
-        <static>1</static>
-        <link name='link'>
-          <collision name='collision'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </collision>
-          <visual name='visual'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </visual>
-          <self_collide>0</self_collide>
-          <enable_wind>0</enable_wind>
-          <kinematic>0</kinematic>
-        </link>
-    </model>
-    <model name='Placa33'>
-        <pose>2.54547 3.81898 0 0 -0 0</pose>
-        <static>1</static>
-        <link name='link'>
-          <collision name='collision'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </collision>
-          <visual name='visual'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </visual>
-          <self_collide>0</self_collide>
-          <enable_wind>0</enable_wind>
-          <kinematic>0</kinematic>
-        </link>
-    </model>
-    <model name='Placa34'>
-        <pose>0.770965 4.81852 0 0 -0 0</pose>
-        <static>1</static>
-        <link name='link'>
-          <collision name='collision'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </collision>
-          <visual name='visual'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </visual>
-          <self_collide>0</self_collide>
-          <enable_wind>0</enable_wind>
-          <kinematic>0</kinematic>
-        </link>
-    </model>
-    <model name='Placa35'>
-        <pose>1.84115 3.40485 0 0 -0 0</pose>
-        <static>1</static>
-        <link name='link'>
-          <collision name='collision'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </collision>
-          <visual name='visual'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </visual>
-          <self_collide>0</self_collide>
-          <enable_wind>0</enable_wind>
-          <kinematic>0</kinematic>
-        </link>
-    </model>
-    <model name='Placa36'>
-        <pose>1.8425 3.04727 0 0 -0 0</pose>
-        <static>1</static>
-        <link name='link'>
-          <collision name='collision'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </collision>
-          <visual name='visual'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </visual>
-          <self_collide>0</self_collide>
-          <enable_wind>0</enable_wind>
-          <kinematic>0</kinematic>
-        </link>
-    </model>
-    <model name='Placa37'>
-        <pose>1.84372 2.70004 0 0 -0 0</pose>
-        <static>1</static>
-        <link name='link'>
-          <collision name='collision'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </collision>
-          <visual name='visual'>
-            <geometry>
-              <box>
-                <size>0.031694 0.360886 0.40006</size>
-              </box>
-            </geometry>
-          </visual>
-          <self_collide>0</self_collide>
-          <enable_wind>0</enable_wind>
-          <kinematic>0</kinematic>
-        </link>
-    </model>
-    <model name='Placa38'>
-        <pose>2.74067 0.52593 0 0 -0 1.57</pose>
+        <pose>1.19353 2.886 0 0 -0 1.57</pose>
         <static>1</static>
         <link name='link'>
           <collision name='collision'>

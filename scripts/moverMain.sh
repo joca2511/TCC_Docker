@@ -1,6 +1,6 @@
 #!/bin/bash
 
-xterm -T "Terminal 6" -e "bash -c 'ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=./maps/mapaBase.yaml params_file:=./burger.yaml; exec bash'" &
+xterm -T "Terminal 6" -e "bash -c 'ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=./maps/$1.yaml params_file:=./burger.yaml; exec bash'" &
 
 sleep 10
 xterm -T "Terminal 8" -e "bash -c 'ros2 action send_goal /navigate_to_pose nav2_msgs/action/NavigateToPose \"{

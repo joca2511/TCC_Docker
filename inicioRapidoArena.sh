@@ -1,8 +1,8 @@
 #!/bin/bash
 
-./scripts/iniciarNmon.sh Arena
-./scripts/instanciarArena.sh Arena.world
+./scripts/iniciarNmon.sh $1
+./scripts/instanciarArena.sh $2.world
 sleep 20
-./scripts/moverMain.sh
+./scripts/moverMain.sh $3
 ./scripts/pararNmon.sh
 ./scripts/matarXTerm.sh
