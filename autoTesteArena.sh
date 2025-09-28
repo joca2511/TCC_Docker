@@ -1,7 +1,7 @@
 #!/bin/bash
 
 while true; do
-	./inicioRapidoArena.sh
+	./inicioRapidoArena.sh $1 $2 $3
 	sleep 15
 	
 done
