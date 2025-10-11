@@ -5,10 +5,10 @@
   gather_facts: yes
   tasks:
 
-    - name: Checa se a versao Linux Jammy 22.04 esta instalada
+    - name: Checa se a versao Linux Jammy esta instalada
       fail:
-        msg: "O playbook precisa de Linux Jammy 22.04!"
-      when: ansible_distribution_release != "jammy" or ansible_distribution_version != "22.04"
+        msg: "O playbook precisa de Linux Jammy"
+      when: ansible_distribution_release != "jammy"
 
     - name: Atualiza apt cache
       become: true
@@ -93,11 +93,16 @@
         name: ros-humble-desktop
         state: present
 
-    - name: Clona repo TCC no Desktop do usuario
-      ansible.builtin.git:
-        repo: 'https://github.com/joca2511/TCC_Docker.git'
-        dest: '/home/{{ ansible_user_id }}/Desktop/TCC_Docker_teste'
-        update: yes
+    - name: Instala pacotes de ROS2
+      become: true
+      ansible.builtin.apt:
+        name:
+          - ros-humble-gazebo-*
+          - ros-humble-cartographer
+          - ros-humble-cartographer-ros
+          - ros-humble-navigation2
+          - ros-humble-nav2-bringup
+        state: present
 
 - name: instalar docker
   ansible.builtin.import_playbook: install-docker.yaml
