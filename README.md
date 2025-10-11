@@ -1,5 +1,6 @@
 Passo a Passo:
-- Instalar Linux Jammy: 
+- Instalar Linux Jammy 
+- Instalar dependências:   
     - Com Ansible:
         - Instalar ansible ([Link para documentação de instalação Ansible](https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html))  
         ```
@@ -15,8 +16,15 @@ Passo a Passo:
     - Sem Ansible:  
         - Instalar ROS2 Humble ([Link para documentação de instalação ROS2](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html))  
         - Instalar Pacotes ROS2 ([Link para documentação de instalação dos Pacotes ROS2 necessários](https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/#pc-setup))  
-        - Adicionar variáveis ao .bashrc (ROS2, TURTLEBOT3_MODEL)  
-        - Instalar Docker(Link para documentação de instalação docker)  
+        - Adicionar variáveis ao .bashrc (ROS2, TURTLEBOT3_MODEL) 
+        ```
+        $ echo "export ROS_DOMAIN_ID=30" >> ~/.bashrc
+        $ echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
+        $ echo "source /opt/ros/Humble/setup.bash" >> ~/.bashrc
+        $ echo "source {Caminho_Até_Pasta_Repo}/install/setup.bash" >> ~/.bashrc
+        $ echo "source /usr/share/gazebo/setup.sh" >> ~/.bashrc
+        ``` 
+        - Instalar Docker([Link para documentação de instalação docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository))  
         - Atribuir usuário ao grupo docker  
         ```
         $ sudo groupadd docker  
