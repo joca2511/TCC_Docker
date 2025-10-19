@@ -34,7 +34,7 @@ COPY scripts scripts
 COPY inicioRapidoArena.sh .
 COPY inicioRapidoPatrulha.sh .
 COPY NMONVisualizer_2025-08-13.jar .
-COPY maps maps
+COPY slams slams
 COPY nmon_logs nmon_logs
 COPY burger.yaml .
 
