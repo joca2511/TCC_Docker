@@ -1,4 +1,4 @@
-Passo a Passo:
+# Passo a Passo de instalação/Setup:
 - Instalar Linux Jammy 
 - Instalar dependências:   
     - Com Ansible:
@@ -31,12 +31,26 @@ Passo a Passo:
         $ sudo usermod -aG docker $USER  
         $ newgrp docker
         ```
-        - Compilar pacotes ROS2  
+        - Compilar Pacotes ROS2 (Certifique-se que está rodando o comando dentro do diretório principal do repo, aonde a pasta src está localizada!)  
         ```
         $ colcon build --symlink-install
         ```
-        
-- 
+# Explicação dos scripts
+- Se certificar que exista a pasta desejada dentro de "nmon_logs" para armazenar suas informações
+- Se certificar que o Mapa desejado esteja dentro de tcc/worlds, e repetir o passo de Compilar Pacotes ROS2
+- Se certificar que o SLAM do mapa desejado esteja dentro da pasta slams
+
+- Scripts de "inicioRapido":
+    - Necessitam de 3 argumentos para rodar testes
+        - Formato:
+        ```
+        {Script iniciorapido} {NomeDaPastaDeResultados} {NomeDoMapa} {NomeDoSlam}
+        ```
+        - Exemplo<br>Salvar os resultados do teste com Patrulheiros na pasta <b>Patrulha</b>, no mapa <b>Arena</b>, com o SLAM <b>Arena</b>:
+        ```
+        inicioRapidoPatrulha.sh Patrulha Arena Arena
+        ```
+
 
 
 
