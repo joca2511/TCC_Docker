@@ -23,6 +23,7 @@
           - locales
           - software-properties-common
           - curl
+          - xterm
         state: present
 
     - name: Gera locales

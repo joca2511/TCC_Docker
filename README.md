@@ -1,7 +1,11 @@
 # Passo a Passo de instalação/Setup:
 - Instalar Linux Jammy 
+- Habilitar xhost para o container linux:
+```
+$ xhost +local:docker
+```
 - Instalar dependências:   
-    - Com Ansible:
+    - ## Com Ansible:
         - Instalar ansible ([Link para documentação de instalação Ansible](https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html))  
         ```
         $ sudo apt update
@@ -13,7 +17,12 @@
         ```
         $ sudo ansible-playbook playbook.yaml
         ```
-    - Sem Ansible:  
+        
+    - ## Sem Ansible:  
+        - Instalar dependencias apt:
+        ```
+        $ sudo apt install -y xterm nmon
+        ```
         - Instalar ROS2 Humble ([Link para documentação de instalação ROS2](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html))  
         - Instalar Pacotes ROS2 ([Link para documentação de instalação dos Pacotes ROS2 necessários](https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/#pc-setup))  
         - Adicionar variáveis ao .bashrc (Altere {Caminho_Até_Pasta_Repo} com o diretório da pasta do repositório ) 
@@ -40,7 +49,7 @@
 - Se certificar que o Mapa desejado esteja dentro de tcc/worlds, e repetir o passo de Compilar Pacotes ROS2
 - Se certificar que o SLAM do mapa desejado esteja dentro da pasta slams
 
-- Scripts de "inicioRapido":
+- Scripts <b>inicioRapido</b>:
     - Necessitam de 3 argumentos para rodar testes
         - Formato:
         ```
@@ -50,6 +59,11 @@
         ```
         inicioRapidoPatrulha.sh Patrulha Arena Arena
         ```
+        - Diferenças entre os scripts:
+            - Scripts com <b>Patrulha</b> instanciam robos que fazem uma rota de patrulha repetitiva em partes específicas do mapa
+            - Scripts com <b>Docker</b> inicializa a stack nav2 do robô principal dentro de um container Docker, se comunicando com o ros2 nativo para movimentar o robô simulado
+- Scripts de <b>autoTeste</b>:
+    - Utilizam os scripts de <b>inicioRapido</b>, os colocando em um loop infinito de teste, que deve ser cancelado por Ctrl+C
 
 
 
