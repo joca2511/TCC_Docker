@@ -1,6 +1,7 @@
 # Passo a Passo de instalação/Setup:
 - Instalar Linux Jammy 
-- Habilitar xhost para o container linux:
+- Inicializar sessão linux com x.org e não wayland, para conseguir configurar xhost
+- Habilitar xhost para o container Docker:
 ```
 $ xhost +local:docker
 ```
@@ -21,6 +22,8 @@ $ xhost +local:docker
     - ## Sem Ansible:  
         - Instalar dependencias apt:
         ```
+        $ sudo apt update
+        $ sudo apt upgrade
         $ sudo apt install -y xterm nmon
         ```
         - Instalar ROS2 Humble ([Link para documentação de instalação ROS2](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html))  
@@ -48,7 +51,7 @@ $ xhost +local:docker
 - Se certificar que exista a pasta desejada dentro de "nmon_logs" para armazenar suas informações
 - Se certificar que o Mapa desejado esteja dentro de tcc/worlds, e repetir o passo de Compilar Pacotes ROS2
 - Se certificar que o SLAM do mapa desejado esteja dentro da pasta slams
-
+- Se certificar que esteja rodando os scripts dentro do diretório principal do repositório
 - Scripts <b>inicioRapido</b>:
     - Necessitam de 3 argumentos para rodar testes
         - Formato:
@@ -60,27 +63,30 @@ $ xhost +local:docker
         inicioRapidoPatrulha.sh Patrulha Arena Arena
         ```
         - Diferenças entre os scripts:
-            - Scripts com <b>Patrulha</b> instanciam robos que fazem uma rota de patrulha repetitiva em partes específicas do mapa
-            - Scripts com <b>Docker</b> inicializa a stack nav2 do robô principal dentro de um container Docker, se comunicando com o ros2 nativo para movimentar o robô simulado
+            - Scripts com <b>Patrulha</b> instanciam robos que fazem uma rota de patrulha repetitiva em partes específicas do mapa, com o intuituo de atrapalhar a navegação do robô principal
+            - Scripts com <b>Docker</b> inicializa a stack nav2 do robô principal dentro de um container Docker, se comunicando com o ros2 nativo para movimentar o robô simulado, com o intuito de testar o desempenho da navegação do robô simulado dentro do container
+
 - Scripts de <b>autoTeste</b>:
-    - Utilizam os scripts de <b>inicioRapido</b>, os colocando em um loop infinito de teste, que deve ser cancelado por Ctrl+C
+    - Utilizam os scripts de <b>inicioRapido</b>, os colocando em um loop infinito de teste, que deve ser cancelado via terminal por Ctrl+C
+- Scripts de auxílio na pasta <b>scripts</b>
+    - iniciarNmon.sh
+        - Inicializa o Nmon e começa a salvar os dados em um novo arquivo dentro da pasta especificada
+    - instanciarArena.sh
+        - Instancia a Arena especificada
+    - instanciarPatrulheiros.sh
+        - Instancia os patrulheiros no Mapa
+    - rotasRobos.sh
+        - Movimenta os patrulheiros instanciados para as posições especificadas, seguindo o seguinte padrão:
+        ```
+        ros2 run tcc turtlebot3_absolute_move_Arena {NomeRobo} {X1} {Y1} {Grau1} {X0} {Y0} {Grau0}
+        ```
+        - {Onde NomeRobo} é o nome do robo nos tópicos ROS2, ({X},{Y},{Grau}) sendo as posições X, Y e o grau de rotação que o robô deve ter
+    - matarXterm.sh
+        - Manda SIGINT para todos os terminais xterm, os fechando de forma segura
+    - moverMain.sh
+        - Inicializa a stack nav2 de navegação, e manda um objetivo de pose para o mesmo, fazendo o robô se movimentar para completa-lo
+    - pararNmon.sh
+        - Para a escrita de log atual do nmon, a salvando
 
-
-
-
-Falta:  
-Terminar passo-a-passo de dependencias
-Talvez eventualmente permitir alimentar um arquivo para rotasRobos  
-
-Comandos necessarios:  
-!!!Lembrar de colocar usuario como x.org antes de logar, inves de wayland!  
-!!!Lembrar de sempre rodar xhost +local:docker!  
-apt update    
-apt upgrade    
-
-apt install nmon, xterm   
-xhost +local:docker  
-install docker engine  
-install ros humble  
 
 
