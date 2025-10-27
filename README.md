@@ -56,7 +56,7 @@ $ xhost +local:docker
     - Necessitam de 3 argumentos para rodar testes
         - Formato:
         ```
-        {Script iniciorapido} {NomeDaPastaDeResultados} {NomeDoMapa} {NomeDoSlam}
+        {Script inicioRapido} {NomeDaPastaDeResultados} {NomeDoMapa} {NomeDoSlam}
         ```
         - Exemplo<br>Salvar os resultados do teste com Patrulheiros na pasta <b>Patrulha</b>, no mapa <b>Arena</b>, com o SLAM <b>Arena</b>:
         ```
