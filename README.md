@@ -60,7 +60,7 @@ $ xhost +local:docker
         ```
         - Exemplo<br>Salvar os resultados do teste com Patrulheiros na pasta <b>Patrulha</b>, no mapa <b>Arena</b>, com o SLAM <b>Arena</b>:
         ```
-        inicioRapidoPatrulha.sh Patrulha Arena Arena
+        $ inicioRapidoPatrulha.sh Patrulha Arena Arena
         ```
         - Diferenças entre os scripts:
             - Scripts com <b>Patrulha</b> instanciam robos que fazem uma rota de patrulha repetitiva em partes específicas do mapa, com o intuituo de atrapalhar a navegação do robô principal
