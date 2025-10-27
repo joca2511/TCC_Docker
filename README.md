@@ -86,7 +86,7 @@ $ xhost +local:docker
     - moverMain.sh
         - Inicializa a stack nav2 de navegação, e manda um objetivo de pose para o mesmo, fazendo o robô se movimentar para completa-lo
     - pararNmon.sh
-        - Para a escrita de log atual do nmon, a salvando
+        - Interrompe a escrita de log atual do nmon, a salvando
 
 
 
