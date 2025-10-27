@@ -78,9 +78,9 @@ $ xhost +local:docker
     - rotasRobos.sh
         - Movimenta os patrulheiros instanciados para as posições especificadas, seguindo o seguinte padrão:
         ```
-        ros2 run tcc turtlebot3_absolute_move_Arena {NomeRobo} {X1} {Y1} {Grau1} {X0} {Y0} {Grau0}
+        $ ros2 run tcc turtlebot3_absolute_move_Arena {NomeRobo} {X1} {Y1} {Grau1} {X0} {Y0} {Grau0}
         ```
-        - {Onde NomeRobo} é o nome do robo nos tópicos ROS2, ({X},{Y},{Grau}) sendo as posições X, Y e o grau de rotação que o robô deve ter
+        - Onde {NomeRobo} é o nome do robo nos tópicos ROS2, ({X},{Y},{Grau}) sendo as posições X, Y e o grau de rotação que o robô deve ter
     - matarXterm.sh
         - Manda SIGINT para todos os terminais xterm, os fechando de forma segura
     - moverMain.sh
