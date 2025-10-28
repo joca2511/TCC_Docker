@@ -18,19 +18,6 @@ $ xhost +local:docker
         ```
         $ sudo ansible-playbook playbook.yaml
         ```
-        - Adicionar variáveis ao .bashrc  
-        ```
-        $ echo "export ROS_DOMAIN_ID=30" >> ~/.bashrc
-        $ echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
-        $ echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
-        $ echo "source /usr/share/gazebo/setup.sh" >> ~/.bashrc
-        ``` 
-        - Compilar Pacotes ROS2 (Certifique-se que está rodando o comando dentro do diretório principal do repo, aonde a pasta src está localizada!)
-        - (Altere {Caminho_Até_Pasta_Repo} com o diretório da pasta do repositório )
-        ```
-        $ colcon build --symlink-install
-        $ echo "source {Caminho_Até_Pasta_Repo}/install/setup.bash" >> ~/.bashrc
-        ```
         
     - ## Sem Ansible:  
         - Instalar dependencias apt:
@@ -40,15 +27,7 @@ $ xhost +local:docker
         $ sudo apt install -y xterm nmon
         ```
         - Instalar ROS2 Humble ([Link para documentação de instalação ROS2](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html))  
-        - Instalar Pacotes ROS2 ([Link para documentação de instalação dos Pacotes ROS2 necessários](https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/#pc-setup))  
-        - Adicionar variáveis ao .bashrc  
-        ```
-        $ echo "export ROS_DOMAIN_ID=30" >> ~/.bashrc
-        $ echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
-        $ echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
-        $ echo "source /usr/share/gazebo/setup.sh" >> ~/.bashrc
-        
-        ``` 
+        - Instalar Pacotes ROS2 ([Link para documentação de instalação dos Pacotes ROS2 necessários](https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/#pc-setup))   
         - Instalar Docker([Link para documentação de instalação docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository))  
         - Atribuir usuário ao grupo docker  
         ```
@@ -56,12 +35,20 @@ $ xhost +local:docker
         $ sudo usermod -aG docker $USER  
         $ newgrp docker
         ```
+    - ## Toques finais para os dois:
+        - Adicionar variáveis ao .bashrc  
+        ```
+        $ echo "export ROS_DOMAIN_ID=30" >> ~/.bashrc
+        $ echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
+        $ echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+        $ echo "source /usr/share/gazebo/setup.sh" >> ~/.bashrc
+        ``` 
         - Compilar Pacotes ROS2 (Certifique-se que está rodando o comando dentro do diretório principal do repo, aonde a pasta src está localizada!)
         - (Altere {Caminho_Até_Pasta_Repo} com o diretório da pasta do repositório )
         ```
         $ colcon build --symlink-install
         $ echo "source {Caminho_Até_Pasta_Repo}/install/setup.bash" >> ~/.bashrc
-        ```
+        ```     
 # Explicação dos scripts
 - Se certificar que exista a pasta desejada dentro de "nmon_logs" para armazenar suas informações
 - Se certificar que o Mapa desejado esteja dentro de tcc/worlds, e repetir o passo de Compilar Pacotes ROS2
