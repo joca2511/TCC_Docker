@@ -23,6 +23,7 @@
           - locales
           - software-properties-common
           - curl
+          - python3-colcon-common-extensions
           - xterm
         state: present
 
@@ -104,20 +105,6 @@
           - ros-humble-navigation2
           - ros-humble-nav2-bringup
         state: present
-
-    - name: Adiciona diretorios e variaveis em bashrc
-      ansible.builtin.blockinfile:
-        path: "{{ ansible_env.HOME }}/.bashrc"
-        block: |
-          export ROS_DOMAIN_ID=30
-          export TURTLEBOT3_MODEL=burger
-          source /opt/ros/humble/setup.bash
-          source /usr/share/gazebo/setup.sh
-          source {{ playbook_dir }}/install/setup.bash
-          
-    - name: Compilar pacotes ROS2
-      ansible.builtin.shell: cd {{ playbook_dir}} && colcon build --symlink-install
-      
 
 
         
