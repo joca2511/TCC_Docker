@@ -1,4 +1,4 @@
-## playbook taken from  https://gist.github.com/Alevsk/8737d992cae94c6f66e713403234d587
+## playbook adapted from  https://gist.github.com/Alevsk/8737d992cae94c6f66e713403234d587
 - hosts: localhost
   name: Install Docker
   become: yes
@@ -66,5 +66,6 @@
 
     - name: Add user to docker group
       user:
-        name: "{{ ansible_user_id }}"
-        group: "{{ docker_group }}"
+        name: "{{ ansible_env.SUDO_USER }}"
+        groups: "{{ docker_group }}"
+        append: true
