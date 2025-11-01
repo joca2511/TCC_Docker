@@ -3,51 +3,51 @@
 - Inicializar sessão linux com x.org e não wayland, para conseguir configurar xhost
 - Habilitar xhost para o container Docker:
 ```
-$ xhost +local:docker
+xhost +local:docker
 ```
 - Instalar dependências:   
     - ## Com Ansible:
         - Instalar ansible ([Link para documentação de instalação Ansible](https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html))  
         ```
-        $ sudo apt update
-        $ sudo apt install software-properties-common
-        $ sudo add-apt-repository --yes --update ppa:ansible/ansible
-        $ sudo apt install ansible
+        sudo apt update
+        sudo apt install software-properties-common
+        sudo add-apt-repository --yes --update ppa:ansible/ansible
+        sudo apt install ansible
         ```
         - Rodar playbook incluído com o repositório  
         ```
-        $ sudo ansible-playbook playbook.yaml
+        sudo ansible-playbook playbook.yaml
         ```
         
     - ## Sem Ansible:  
         - Instalar dependencias apt:
         ```
-        $ sudo apt update
-        $ sudo apt upgrade
-        $ sudo apt install -y xterm nmon
+        sudo apt update
+        sudo apt upgrade
+        sudo apt install -y xterm nmon
         ```
         - Instalar ROS2 Humble ([Link para documentação de instalação ROS2](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html))  
         - Instalar Pacotes ROS2 ([Link para documentação de instalação dos Pacotes ROS2 necessários](https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/#pc-setup))   
         - Instalar Docker([Link para documentação de instalação docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository))  
         - Atribuir usuário ao grupo docker  
         ```
-        $ sudo groupadd docker  
-        $ sudo usermod -aG docker $USER  
-        $ newgrp docker
+        sudo groupadd docker  
+        sudo usermod -aG docker $USER  
+        newgrp docker
         ```
     - ## Toques finais para os dois:
         - Adicionar variáveis ao .bashrc  
         ```
-        $ echo "export ROS_DOMAIN_ID=30" >> ~/.bashrc
-        $ echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
-        $ echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
-        $ echo "source /usr/share/gazebo/setup.sh" >> ~/.bashrc
+        echo "export ROS_DOMAIN_ID=30" >> ~/.bashrc
+        echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
+        echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+        echo "source /usr/share/gazebo/setup.sh" >> ~/.bashrc
         ``` 
         - Compilar Pacotes ROS2 (Certifique-se que está rodando o comando dentro do diretório principal do repo, aonde a pasta src está localizada!)
         - (Altere {Caminho_Até_Pasta_Repo} com o diretório da pasta do repositório )
         ```
-        $ colcon build --symlink-install
-        $ echo "source {Caminho_Até_Pasta_Repo}/install/setup.bash" >> ~/.bashrc
+        colcon build --symlink-install
+        echo "source {Caminho_Até_Pasta_Repo}/install/setup.bash" >> ~/.bashrc
         ```     
 # Explicação dos scripts
 - Se certificar que exista a pasta desejada dentro de "nmon_logs" para armazenar suas informações
@@ -62,7 +62,7 @@ $ xhost +local:docker
         ```
         - Exemplo<br>Salvar os resultados do teste com Patrulheiros na pasta <b>Patrulha</b>, no mapa <b>Arena</b>, com o SLAM <b>Arena</b>:
         ```
-        $ inicioRapidoPatrulha.sh Patrulha Arena Arena
+        inicioRapidoPatrulha.sh Patrulha Arena Arena
         ```
         - Diferenças entre os scripts:
             - Scripts com <b>Patrulha</b> instanciam robos que fazem uma rota de patrulha repetitiva em partes específicas do mapa, com o intuituo de atrapalhar a navegação do robô principal
@@ -80,7 +80,7 @@ $ xhost +local:docker
     - rotasRobos.sh
         - Movimenta os patrulheiros instanciados para as posições especificadas, seguindo o seguinte padrão:
         ```
-        $ ros2 run tcc turtlebot3_absolute_move_Arena {NomeRobo} {X1} {Y1} {Grau1} {X0} {Y0} {Grau0}
+        ros2 run tcc turtlebot3_absolute_move_Arena {NomeRobo} {X1} {Y1} {Grau1} {X0} {Y0} {Grau0}
         ```
         - Onde {NomeRobo} é o nome do robo nos tópicos ROS2, ({X},{Y},{Grau}) sendo as posições X, Y e o grau de rotação que o robô deve ter
     - matarXterm.sh
