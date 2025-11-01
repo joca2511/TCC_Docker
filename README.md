@@ -42,7 +42,8 @@ xhost +local:docker
         echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
         echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
         echo "source /usr/share/gazebo/setup.sh" >> ~/.bashrc
-        ``` 
+        ```
+        - Reiniciar/abrir outro terminal, para o .bashrc ter efeito
         - Compilar Pacotes ROS2 (Certifique-se que está rodando o comando dentro do diretório principal do repo, aonde a pasta src está localizada!)
         - (Altere {Caminho_Até_Pasta_Repo} com o diretório da pasta do repositório )
         ```
