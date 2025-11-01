@@ -51,6 +51,7 @@ xhost +local:docker
         echo "source {Caminho_Até_Pasta_Repo}/install/setup.bash" >> ~/.bashrc
         ```     
         - Reiniciar/abrir outro terminal novamente
+        - Recomendado reiniciar o computador, para limpar todos os caches de configurações!
         - Pronto! Seu ambiente está preparado!
 # Explicação dos scripts
 - Se certificar que exista a pasta desejada dentro de "nmon_logs" para armazenar suas informações
