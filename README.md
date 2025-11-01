@@ -50,6 +50,8 @@ xhost +local:docker
         colcon build --symlink-install
         echo "source {Caminho_Até_Pasta_Repo}/install/setup.bash" >> ~/.bashrc
         ```     
+        - Reiniciar/abrir outro terminal novamente
+        - Pronto! Seu ambiente está preparado!
 # Explicação dos scripts
 - Se certificar que exista a pasta desejada dentro de "nmon_logs" para armazenar suas informações
 - Se certificar que o Mapa desejado esteja dentro de tcc/worlds, e repetir o passo de Compilar Pacotes ROS2
