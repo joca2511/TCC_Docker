@@ -3,7 +3,7 @@
 - Inicializar sessão linux com x.org e não wayland, para conseguir configurar xhost
 - Habilitar xhost para o container Docker:
 ```
-xhost +local:docker
+echo "xhost +local:docker" >> ~/.bashrc
 ```
 - Instalar dependências:   
     - ## Com Ansible:
