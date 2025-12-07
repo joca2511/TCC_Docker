@@ -1,4 +1,4 @@
-# Original Dockerfile taken from https://github.com/ROBOTIS-GIT/turtlebot3
+# Original Dockerfile taken from https://github.com/ROBOTIS-GIT/turtlebot3/tree/main/docker/humble
 
 # Use the base ROS2 humble image
 FROM osrf/ros:humble-desktop-full
